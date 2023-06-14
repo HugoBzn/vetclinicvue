@@ -1,4 +1,14 @@
-<script setup></script>
+<script setup>
+import { reactive } from "vue";
+
+const pacienteState = reactive({
+  nombre: "",
+  propietario: "",
+  email: "",
+  alta: "",
+  sintomas: "",
+});
+</script>
 
 <template>
   <div class="md:w-1/2">
@@ -15,6 +25,7 @@
           type="text"
           placeholder="Nombre de la mascota"
           class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          v-model="pacienteState.nombre"
         />
       </div>
 
@@ -25,6 +36,7 @@
           type="text"
           placeholder="Nombre del propietario"
           class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          v-model="pacienteState.propietario"
         />
       </div>
 
@@ -35,6 +47,7 @@
           type="email"
           placeholder="Email"
           class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          v-model="pacienteState.email"
         />
       </div>
 
@@ -44,6 +57,7 @@
           id="alta"
           type="date"
           class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          v-model="pacienteState.alta"
         />
       </div>
 
@@ -53,6 +67,7 @@
           id="sintomas"
           placeholder="Describe los síntomas"
           class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black h-40"
+          v-model="pacienteState.sintomas"
         />
       </div>
 
