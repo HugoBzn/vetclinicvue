@@ -1,5 +1,11 @@
 <script setup>
 import { reactive } from "vue";
+import Alerta from "./Alerta.vue";
+
+const alertaState = reactive({
+  mensaje: "",
+  tipo: "",
+});
 
 const pacienteState = reactive({
   nombre: "",
@@ -8,6 +14,15 @@ const pacienteState = reactive({
   alta: "",
   sintomas: "",
 });
+
+const validar = () => {
+  if (Object.values(pacienteState).includes("")) {
+    alertaState.mensaje = "Todos los campos son obligatorios";
+    alertaState.tipo = "error";
+    return;
+  }
+  console.log("Despues del IF");
+};
 </script>
 
 <template>
@@ -17,7 +32,12 @@ const pacienteState = reactive({
       Añade pacientes <span class="text-violet-600 font-bold">Adminístralos</span>
     </p>
 
-    <form action="" class="bg-gray-900 rounded-lg py-10 px-5 mb-10 mx-5 border border-violet-600">
+    <Alerta v-if="alertaState.mensaje" :alerta="alertaState" />
+
+    <form
+      @submit.prevent="validar"
+      class="bg-gray-900 rounded-lg py-10 px-5 mb-10 mx-5 border border-violet-600"
+    >
       <div class="mb-5">
         <label for="mascota" class="block uppercase font-bold"> Nombre mascota </label>
         <input
