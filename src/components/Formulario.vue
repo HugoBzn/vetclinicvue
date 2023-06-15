@@ -30,12 +30,13 @@ const props = defineProps({
   },
 });
 
-defineEmits([
+const emit = defineEmits([
   "update:nombre",
   "update:propietario",
   "update:email",
   "update:alta",
   "update:sintomas",
+  "guardar-paciente",
 ]);
 
 const validar = () => {
@@ -44,7 +45,7 @@ const validar = () => {
     alertaState.tipo = "error";
     return;
   }
-  console.log("Despues del IF");
+  emit("guardar-paciente");
 };
 </script>
 

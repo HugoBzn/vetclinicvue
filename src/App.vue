@@ -12,6 +12,10 @@ const pacienteState = reactive({
   alta: "",
   sintomas: "",
 });
+
+const guardarPaciente = () => {
+  pacientes.value.push(pacienteState);
+};
 </script>
 
 <template>
@@ -25,6 +29,7 @@ const pacienteState = reactive({
         v-model:email="pacienteState.email"
         v-model:alta="pacienteState.alta"
         v-model:sintomas="pacienteState.sintomas"
+        @guardar-paciente="guardarPaciente"
       />
 
       <div class="md:w-1/2 md:h-screen overflow-y-auto">
