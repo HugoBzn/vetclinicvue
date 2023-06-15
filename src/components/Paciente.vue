@@ -5,6 +5,8 @@ defineProps({
     required: true,
   },
 });
+
+defineEmits(["actualizar-paciente"]);
 </script>
 
 <template>
@@ -43,6 +45,7 @@ defineProps({
       <button
         type="button"
         class="block w-full py-2 px-10 bg-violet-600 hover:bg-violet-700 font-bold uppercase rounded-lg"
+        @click="$emit('actualizar-paciente', paciente.id)"
       >
         Editar
       </button>

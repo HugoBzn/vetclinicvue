@@ -7,7 +7,7 @@ import Paciente from "./components/Paciente.vue";
 
 const pacientes = ref([]);
 
-const pacienteState = reactive({
+const paciente = reactive({
   id: null,
   nombre: "",
   propietario: "",
@@ -17,16 +17,28 @@ const pacienteState = reactive({
 });
 
 const guardarPaciente = () => {
-  pacientes.value.push({ ...pacienteState, id: uid() });
+  if (paciente.id) {
+    const { id } = paciente;
+    const i = pacientes.value.findIndex((pacienteState) => pacienteState.id === id);
+    pacientes.value[i] = {...paciente};
+  } else {
+    pacientes.value.push({ ...paciente, id: uid() });
+  }
 
   // Reset form
-  Object.assign(pacienteState, {
+  Object.assign(paciente, {
     nombre: "",
     propietario: "",
     email: "",
     alta: "",
     sintomas: "",
+    id: null,
   });
+};
+
+const actualizarPaciente = (id) => {
+  const pacienteEditar = pacientes.value.filter((paciente) => paciente.id === id)[0];
+  Object.assign(paciente, pacienteEditar);
 };
 </script>
 
@@ -36,12 +48,13 @@ const guardarPaciente = () => {
 
     <div class="mt-12 md:flex">
       <Formulario
-        v-model:nombre="pacienteState.nombre"
-        v-model:propietario="pacienteState.propietario"
-        v-model:email="pacienteState.email"
-        v-model:alta="pacienteState.alta"
-        v-model:sintomas="pacienteState.sintomas"
+        v-model:nombre="paciente.nombre"
+        v-model:propietario="paciente.propietario"
+        v-model:email="paciente.email"
+        v-model:alta="paciente.alta"
+        v-model:sintomas="paciente.sintomas"
         @guardar-paciente="guardarPaciente"
+        :id="paciente.id"
       />
 
       <div class="md:w-1/2">
@@ -51,7 +64,11 @@ const guardarPaciente = () => {
         </p>
         <div class="overflow-y-scroll" style="height: 50rem">
           <div v-if="pacientes.length > 0">
-            <Paciente v-for="paciente in pacientes" :paciente="paciente" />
+            <Paciente
+              v-for="paciente in pacientes"
+              :paciente="paciente"
+              @actualizar-paciente="actualizarPaciente"
+            />
           </div>
           <div v-else>
             <p class="mt-10 text-2xl text-center pb-10">
