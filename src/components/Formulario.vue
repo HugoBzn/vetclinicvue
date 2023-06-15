@@ -44,7 +44,7 @@ const validar = () => {
           id="mascota"
           type="text"
           placeholder="Nombre de la mascota"
-          class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          class="border-2 w-full py-2 mt-2 placeholder-gray-400 rounded-md text-black"
           v-model="pacienteState.nombre"
         />
       </div>
@@ -55,7 +55,7 @@ const validar = () => {
           id="propietario"
           type="text"
           placeholder="Nombre del propietario"
-          class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          class="border-2 w-full py-2 mt-2 placeholder-gray-400 rounded-md text-black"
           v-model="pacienteState.propietario"
         />
       </div>
@@ -66,7 +66,7 @@ const validar = () => {
           id="email"
           type="email"
           placeholder="Email"
-          class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          class="border-2 w-full py-2 mt-2 placeholder-gray-400 rounded-md text-black"
           v-model="pacienteState.email"
         />
       </div>
@@ -76,7 +76,7 @@ const validar = () => {
         <input
           id="alta"
           type="date"
-          class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black"
+          class="border-2 w-full py-2 mt-2 placeholder-gray-400 rounded-md text-black"
           v-model="pacienteState.alta"
         />
       </div>
@@ -86,7 +86,7 @@ const validar = () => {
         <textarea
           id="sintomas"
           placeholder="Describe los síntomas"
-          class="border-2 w-full pt-2 mt-2 placeholder-gray-400 rounded-md text-black h-40"
+          class="border-2 w-full py-2 mt-2 placeholder-gray-400 rounded-md text-black h-40"
           v-model="pacienteState.sintomas"
         />
       </div>
