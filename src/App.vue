@@ -15,7 +15,14 @@ const pacienteState = reactive({
 });
 
 const guardarPaciente = () => {
-  pacientes.value.push(pacienteState);
+  pacientes.value.push({ ...pacienteState });
+
+  // Reset form
+  pacienteState.nombre = "";
+  pacienteState.propietario = "";
+  pacienteState.email = "";
+  pacienteState.alta = "";
+  pacienteState.sintomas = "";
 };
 </script>
 
