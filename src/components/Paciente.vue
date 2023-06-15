@@ -11,7 +11,7 @@ defineProps({
   <div class="bg-gray-900 rounded-lg mx-5 my-10 px-5 py-10 border border-violet-600">
     <p class="font-bold mb-3 uppercase">
       ID:
-      <span class="font-normal normal-case"> </span>
+      <span class="font-normal normal-case"> {{ paciente.id }} </span>
     </p>
 
     <p class="font-bold mb-3 uppercase">

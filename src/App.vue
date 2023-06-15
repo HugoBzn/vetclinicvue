@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive } from "vue";
+import { uid } from "uid";
 import Header from "./components/Header.vue";
 import Formulario from "./components/Formulario.vue";
 import Paciente from "./components/Paciente.vue";
@@ -7,6 +8,7 @@ import Paciente from "./components/Paciente.vue";
 const pacientes = ref([]);
 
 const pacienteState = reactive({
+  id: null,
   nombre: "",
   propietario: "",
   email: "",
@@ -15,14 +17,16 @@ const pacienteState = reactive({
 });
 
 const guardarPaciente = () => {
-  pacientes.value.push({ ...pacienteState });
+  pacientes.value.push({ ...pacienteState, id: uid() });
 
   // Reset form
-  pacienteState.nombre = "";
-  pacienteState.propietario = "";
-  pacienteState.email = "";
-  pacienteState.alta = "";
-  pacienteState.sintomas = "";
+  Object.assign(pacienteState, {
+    nombre: "",
+    propietario: "",
+    email: "",
+    alta: "",
+    sintomas: "",
+  });
 };
 </script>
 
@@ -59,11 +63,3 @@ const guardarPaciente = () => {
     </div>
   </div>
 </template>
-
-<style lang="css">
-@media (min-width: 768px) {
-  pacientes {
-    height: 75rem;
-  }
-}
-</style>
