@@ -24,7 +24,6 @@ watch(
   { deep: true }
 );
 
-
 const guardarLocalStorage = () => {
   localStorage.setItem("pacientes", JSON.stringify(pacientes.value));
 };
@@ -90,6 +89,7 @@ const eliminarPaciente = (id) => {
           <div v-if="pacientes.length > 0">
             <Paciente
               v-for="paciente in pacientes"
+              :key="paciente.id"
               :paciente="paciente"
               @actualizar-paciente="actualizarPaciente"
               @eliminar-paciente="eliminarPaciente"
